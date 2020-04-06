@@ -21,13 +21,25 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
 
         $text = $event['message']['text'];
-        $data = [
-            'replyToken' => $reply_token,
-            // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
-            'messages' => [['type' => 'text', 'text' => $text ]]
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-
+		if($text=='text')
+		{
+			$data = [
+				'replyToken' => $reply_token,
+				// 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
+				'messages' => [['type' => 'text', 'text' => $text ]]
+			];
+			$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+		}
+		else if ($text=='sticker')
+		{
+			$data = [
+				'replyToken' => $reply_token,
+				// 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
+				'messages' => [['type' => 'sticker', 'packageId' => 1, 'stickerId' => 1, 'stickerResourceType' => 'STATIC']]
+			];
+		}
+		
+		$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
         echo "Result: ".$send_result."\r\n";
@@ -35,7 +47,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 }
 
 echo "OK";
-//http_response_code(200);
+
 
 
 
