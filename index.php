@@ -49,7 +49,19 @@ if ( sizeof($request_array['events']) > 0 ) {
 					       ]]
 			];
 		}
-		
+	    	else if ($text=='video')
+		{
+			$data = [
+				'replyToken' => $reply_token,
+				'messages' => [['type' => 'video',
+						'duration' => 60000,
+						'contentProvider' => [['type' => 'external',
+									'originalContentUrl' => 'https://entersec.co.th/0001.mp4',
+									'previewImageUrl' => 'https://entersec.co.th/0001.jpg',
+					       				]]
+					       ]]
+			];
+		}	        
 	$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
