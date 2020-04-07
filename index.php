@@ -34,7 +34,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 		{
 			$data = [
 				'replyToken' => $reply_token,
-				'messages' => [['type' => 'sticker', 'packageId' => 1, 'stickerId' => 1, 'stickerResourceType' => 'STATIC']]
+				'messages' => [['type' => 'sticker', 'packageId' => 1, 'stickerId' => 2, 'stickerResourceType' => 'STATIC']]
 			];
 		}
 	    	else if ($text=='location')
