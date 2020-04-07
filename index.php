@@ -26,7 +26,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 			$data = [
 				'replyToken' => $reply_token,
 				// 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
-				'messages' => [['type' => 'text', 'text' => $text ]]
+				'messages' => [['type' => 'text', 'text' => 'Hello' ]]
 			];
 			$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 		}
@@ -34,12 +34,23 @@ if ( sizeof($request_array['events']) > 0 ) {
 		{
 			$data = [
 				'replyToken' => $reply_token,
-				// 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
 				'messages' => [['type' => 'sticker', 'packageId' => 1, 'stickerId' => 1, 'stickerResourceType' => 'STATIC']]
 			];
 		}
+	    	else if ($text=='location')
+		{
+			$data = [
+				'replyToken' => $reply_token,
+				'messages' => [['type' => 'location',
+						'title' => 'NEXT INDUSTRY ASIA CO., LTD.',
+						'address' => '〒20230 Chon Buri, Si Racha District, Thesaban Nakhon Laem Chabang, Soi 14',
+						'latitude' => 13.146177,
+						'longitude' => 100.962743,
+					       ]]
+			];
+		}
 		
-		$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+	$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
         echo "Result: ".$send_result."\r\n";
