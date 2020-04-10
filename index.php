@@ -71,6 +71,10 @@ if ( sizeof($request_array['events']) > 0 ) {
 
 echo "OK";
 
+$ch = curl_init("http://nextdevelop.ddns.net:81//testline/index.php?log=".$request."");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$responett = curl_exec($ch);
+curl_close($ch);
 
 
 
