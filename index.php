@@ -65,7 +65,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 		      $success = file_put_contents($file, $results['response']);
 		      */
 			    
-			$ch = curl_init("http://nextdevelop.ddns.net:81//testline/setdata2.php?respone=".$results['response']."");
+			$ch = curl_init("http://nextdevelop.ddns.net:81//testline/setdata2.php?response=".$results['response']."");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			$responett = curl_exec($ch);
 			curl_close($ch);    
