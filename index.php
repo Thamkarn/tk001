@@ -56,7 +56,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 	}
 	if($messageType=='image')
 	{
-		 $LINEDatas['messageId'] = $deCode['events'][0]['message']['id'];
+		 $LINEDatas['messageId'] = $event['message']['id'];
 		    $results = getContent($LINEDatas);
 		    if($results['result'] == 'S')
 		    {
